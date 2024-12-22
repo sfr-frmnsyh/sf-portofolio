@@ -45,13 +45,7 @@ export const WavyBackground = ({
     render();
   };
 
-  const waveColors = colors ?? [
-    "#373A40",
-    "#686D76",
-    "#EEEEEE",
-    "#1E201E",
-    "#F5EDED",
-  ];
+  const waveColors = colors ?? ["#373A40", "#686D76", "#EEEEEE", "#1E201E", "#F5EDED"];
   const drawWave = (n) => {
     nt += getSpeed();
     for (i = 0; i < n; i++) {
@@ -76,30 +70,25 @@ export const WavyBackground = ({
     animationId = requestAnimationFrame(render);
   };
 
+  /* eslint-disable */
   useEffect(() => {
     init();
     return () => {
       cancelAnimationFrame(animationId);
     };
   }, []);
+  /* eslint-enable */
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
     // I'm sorry but i have got to support it on safari.
     setIsSafari(
-      typeof window !== "undefined" &&
-        navigator.userAgent.includes("Safari") &&
-        !navigator.userAgent.includes("Chrome")
+      typeof window !== "undefined" && navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")
     );
   }, []);
 
   return (
-    <div
-      className={cn(
-        "flex flex-col items-center justify-center",
-        containerClassName
-      )}
-    >
+    <div className={cn("flex flex-col items-center justify-center", containerClassName)}>
       <canvas
         className="absolute inset-0 z-0"
         ref={canvasRef}

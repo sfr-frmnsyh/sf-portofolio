@@ -1,43 +1,10 @@
 "use client";
-
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import ContactForm from "@/components/ContactForm";
 import { openLinkInNewWindow } from "@/utils/navigation";
 import { FaLinkedin } from "react-icons/fa";
 import { RiMailFill, RiWhatsappFill } from "react-icons/ri";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
-const formSchema = z.object({
-  name: z.string().min(1),
-  email: z.string().email().min(5),
-  subject: z.string().min(1),
-  message: z.string().min(1),
-});
-const page = () => {
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
-  });
-
-  const onSubmit = (values) => {
-    const phone = "6281931604332";
-    const message = `Subject: ${values.subject}\n\nHello, saya ${values.name} dari ${values.email}.\n${values.message}`;
-    const encodedMessage = encodeURIComponent(message);
-
-    openLinkInNewWindow(`https://api.whatsapp.com/send/?phone=${phone}&text=${encodedMessage}`);
-  };
-
+const Page = () => {
   return (
     <section className="container mx-auto min-h-screen">
       <div className="flex flex-col justify-center justify-items-center items-center lg:flex-row mt-24">
@@ -50,75 +17,11 @@ const page = () => {
             </div>
           </h1>
           <p className="subtitle text-justify mt-4">
-            Let's create something amazing together! Fill out the contact form, or reach out to me directly via
-            whatsapp, email, or LinkedIn. I'm excited to discuss how we can work on your next project !
+            Let&apos;s create something amazing together! Fill out the contact form, or reach out to me directly via
+            whatsapp, email, or LinkedIn. I&apos;m excited to discuss how we can work on your next project !
           </p>
 
-          <Card className="w-full p-6 mt-8 shadow-lg">
-            <h1 className="text-2xl font-bold mb-4">Contact Me</h1>
-
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Full Name</FormLabel>
-                        <FormControl>
-                          <Input name="name" placeholder="John Doe" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="john.doe@email.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem className="col-span-full">
-                        <FormLabel>Subject</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Subject" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem className="col-span-full">
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="Message" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button className="col-span-full" type="submit">
-                    Send Message
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </Card>
+          <ContactForm />
         </div>
 
         <div className="mt-0 lg:w-1/2">
@@ -173,4 +76,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

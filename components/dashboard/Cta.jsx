@@ -13,7 +13,7 @@ export const Cta = () => {
             <div className="flex flex-col items-center">
               <h2 className="text-4xl font-extrabold text-white text-center mb-2">Looking to collaborate ?</h2>
               <p className="text-white/70 text-center mb-12">
-                I'm eager to connect and explore how we can create something amazing together.
+                I&apos;m eager to connect and explore how we can create something amazing together.
               </p>
               <Link href="/contact">
                 <Button className="gap-x-2">

@@ -152,7 +152,7 @@ export const About = () => {
                         Qualification Information Details
                       </h3>
                       <p className="subtitle text-base">
-                        Here's a brief overview of my background and experience.
+                        Here&apos;s a brief overview of my background and experience.
                       </p>
                     </div>
                     {/* experiences & education wrapper */}
