@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 import { Socials } from "../Socials";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { Button } from "../ui/button";
-import { openInternalLinkInNewWindow, scrollToDiv } from "@/utils/navigation";
+import { openLinkInNewWindow, scrollToDiv } from "@/utils/navigation";
 import Link from "next/link";
 import { Download, Send } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -85,7 +85,11 @@ export const Hero = () => {
                     </Button>
                   </Link>
                   <Button
-                    onClick={() => openInternalLinkInNewWindow("/files/sf-resume.pdf")}
+                    onClick={() =>
+                      openLinkInNewWindow(
+                        "https://drive.google.com/drive/folders/1i1zbKt0cFBaFFeUKsNr9nOrgnhb-OB3T?usp=sharing"
+                      )
+                    }
                     variant="secondary"
                     className="gap-x-2"
                   >
